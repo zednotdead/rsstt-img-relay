@@ -67,6 +67,10 @@ async function fetchHandler(request, env, ctx) {
         let url = urlMatch[2];
 
         url = decodeURIComponent(url);
+        
+        if (url.includes("instagram.fpoz2-1.fna.fbcdn.net")) {
+            url = url.replace('instagram.fpoz2-1.fna.fbcdn.net', 'scontent.cdninstagram.com')
+        }
 
         //需要忽略的代理
         if (request.method == "OPTIONS" || url.length < 3 || url.indexOf('.') == -1 || url == "favicon.ico" || url == "robots.txt") {
